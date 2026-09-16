@@ -1,0 +1,1123 @@
+/* =========================================================
+   MEMÓRIA CÓSMICA
+   CSS COMPLETO
+========================================================= */
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+}
+
+
+body {
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #162f78 0%,
+            #071332 45%,
+            #02040d 100%
+        );
+
+    color: white;
+
+    overflow-x: hidden;
+}
+
+
+/* =========================================================
+   FUNDO ESTELAR
+========================================================= */
+
+body::before {
+
+    content: "";
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    opacity: 0.45;
+
+    background-image:
+        radial-gradient(circle, white 1px, transparent 1px);
+
+    background-size: 70px 70px;
+}
+
+
+/* =========================================================
+   UTILITÁRIO
+========================================================= */
+
+.hidden {
+    display: none !important;
+}
+
+
+/* =========================================================
+   APP
+========================================================= */
+
+#app {
+
+    width: 100%;
+    min-height: 100vh;
+
+    position: relative;
+
+    z-index: 1;
+}
+
+
+/* =========================================================
+   TELAS
+========================================================= */
+
+.screen {
+
+    width: 100%;
+    min-height: 100vh;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 30px;
+}
+
+
+/* =========================================================
+   LOGO
+========================================================= */
+
+.logo {
+
+    text-align: center;
+
+    margin-bottom: 45px;
+}
+
+
+.logo-icon {
+
+    font-size: 70px;
+
+    margin-bottom: 10px;
+
+    filter:
+        drop-shadow(0 0 20px #6da8ff);
+}
+
+
+.logo h1 {
+
+    font-size: clamp(32px, 6vw, 70px);
+
+    letter-spacing: 5px;
+
+    text-shadow:
+        0 0 10px #4da3ff,
+        0 0 25px #2478ff,
+        0 0 45px #174cff;
+}
+
+
+.logo p {
+
+    margin-top: 15px;
+
+    font-size: 18px;
+
+    opacity: 0.85;
+}
+
+
+/* =========================================================
+   BOTÕES
+========================================================= */
+
+button {
+
+    border: none;
+
+    border-radius: 12px;
+
+    padding: 15px 25px;
+
+    margin: 8px;
+
+    min-width: 230px;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            135deg,
+            #1d67ff,
+            #5628c9
+        );
+
+    box-shadow:
+        0 0 12px rgba(65, 130, 255, 0.45);
+
+    cursor: pointer;
+
+    transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease,
+        opacity 0.15s ease;
+}
+
+
+button:hover {
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 0 22px rgba(65, 150, 255, 0.8);
+}
+
+
+button:active {
+
+    transform: scale(0.97);
+}
+
+
+button:disabled {
+
+    opacity: 0.4;
+
+    cursor: not-allowed;
+
+    transform: none;
+
+    box-shadow: none;
+}
+
+
+button.secondary {
+
+    background:
+        rgba(255, 255, 255, 0.08);
+
+    border:
+        1px solid rgba(255, 255, 255, 0.2);
+
+    box-shadow: none;
+}
+
+
+/* =========================================================
+   PAINEL
+========================================================= */
+
+.panel {
+
+    width: min(550px, 95vw);
+
+    padding: 35px;
+
+    border-radius: 25px;
+
+    text-align: center;
+
+    background:
+        rgba(5, 15, 45, 0.88);
+
+    border:
+        1px solid rgba(100, 180, 255, 0.35);
+
+    box-shadow:
+        0 0 35px rgba(0, 90, 255, 0.3);
+
+    backdrop-filter: blur(10px);
+}
+
+
+.panel h2 {
+
+    font-size: 30px;
+
+    margin-bottom: 25px;
+}
+
+
+.panel h3 {
+
+    margin:
+        20px 0 12px;
+}
+
+
+/* =========================================================
+   INPUTS
+========================================================= */
+
+input {
+
+    width: 100%;
+
+    padding: 15px;
+
+    margin:
+        7px 0;
+
+    border-radius: 10px;
+
+    border:
+        1px solid rgba(100, 180, 255, 0.4);
+
+    background:
+        rgba(0, 0, 0, 0.35);
+
+    color: white;
+
+    font-size: 17px;
+
+    outline: none;
+
+    text-align: center;
+}
+
+
+input:focus {
+
+    border-color:
+        #69b8ff;
+
+    box-shadow:
+        0 0 15px rgba(80, 160, 255, 0.35);
+}
+
+
+input::placeholder {
+
+    color:
+        rgba(255,255,255,0.55);
+}
+
+
+/* =========================================================
+   MODOS
+========================================================= */
+
+.mode-container {
+
+    display: flex;
+
+    gap: 10px;
+
+    margin-bottom: 15px;
+}
+
+
+.mode {
+
+    flex: 1;
+
+    min-width: 0;
+
+    background:
+        rgba(255,255,255,0.06);
+
+    border:
+        2px solid transparent;
+
+    box-shadow: none;
+
+    padding: 18px 10px;
+}
+
+
+.mode strong {
+
+    display: block;
+
+    font-size: 18px;
+}
+
+
+.mode small {
+
+    display: block;
+
+    margin-top: 7px;
+
+    opacity: 0.75;
+}
+
+
+.mode.selected {
+
+    border-color:
+        #6ab5ff;
+
+    background:
+        rgba(40, 120, 255, 0.22);
+
+    box-shadow:
+        0 0 18px rgba(50,130,255,0.35);
+}
+
+
+/* =========================================================
+   CÓDIGO DA SALA
+========================================================= */
+
+.room-code-box {
+
+    margin:
+        20px 0;
+
+    padding: 20px;
+
+    border-radius: 15px;
+
+    background:
+        rgba(0, 0, 0, 0.3);
+
+    border:
+        1px solid rgba(100,180,255,0.3);
+}
+
+
+.room-code-box span {
+
+    display: block;
+
+    font-size: 13px;
+
+    opacity: 0.7;
+
+    margin-bottom: 8px;
+}
+
+
+.room-code-box strong {
+
+    display: block;
+
+    font-size: 42px;
+
+    letter-spacing: 10px;
+
+    color: #8bd1ff;
+
+    text-shadow:
+        0 0 15px #2d8fff;
+
+    margin-bottom: 12px;
+}
+
+
+.copy-button {
+
+    min-width: 180px;
+
+    padding: 11px 18px;
+
+    margin: 0;
+}
+
+
+/* =========================================================
+   JOGADORES
+========================================================= */
+
+#players {
+
+    margin:
+        20px 0;
+}
+
+
+.player-row {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 12px 15px;
+
+    margin:
+        7px 0;
+
+    border-radius: 10px;
+
+    background:
+        rgba(255,255,255,0.06);
+}
+
+
+#waitingMessage {
+
+    margin:
+        15px 0;
+
+    opacity: 0.8;
+}
+
+
+/* =========================================================
+   JOGO
+========================================================= */
+
+.game-screen {
+
+    width: 100%;
+
+    min-height: 100vh;
+
+    padding:
+        20px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #183b91,
+            #06143b 65%,
+            #020611
+        );
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.game-header {
+
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+        1fr auto 1fr;
+
+    gap: 15px;
+
+    align-items: center;
+
+    margin-bottom: 20px;
+}
+
+
+.player-info {
+
+    min-width: 150px;
+
+    padding: 12px 16px;
+
+    border-radius: 12px;
+
+    background:
+        rgba(10, 20, 70, 0.8);
+
+    border:
+        1px solid rgba(100,180,255,0.4);
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 4px;
+}
+
+
+.player-info.local {
+
+    text-align: right;
+}
+
+
+.player-label {
+
+    font-size: 11px;
+
+    opacity: 0.65;
+
+    letter-spacing: 1px;
+}
+
+
+.player-info strong {
+
+    font-size: 18px;
+}
+
+
+.turn-info {
+
+    text-align: center;
+
+    min-width: 190px;
+}
+
+
+.turn-info strong {
+
+    display: block;
+
+    font-size: 20px;
+
+    margin-bottom: 5px;
+
+    text-shadow:
+        0 0 12px #8ac5ff;
+}
+
+
+.turn-info span {
+
+    font-size: 12px;
+
+    opacity: 0.8;
+}
+
+
+/* =========================================================
+   TABULEIRO
+========================================================= */
+
+#board {
+
+    width: min(1100px, 100%);
+
+    margin:
+        0 auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(8, 1fr);
+
+    gap: 8px;
+
+    flex: 1;
+
+    align-content: center;
+}
+
+
+/* =========================================================
+   CARTA
+========================================================= */
+
+.card {
+
+    position: relative;
+
+    width: 100%;
+
+    aspect-ratio: 1 / 1.15;
+
+    border: none;
+
+    padding: 0;
+
+    margin: 0;
+
+    min-width: 0;
+
+    background: transparent;
+
+    cursor: pointer;
+
+    perspective: 1000px;
+
+    box-shadow: none;
+
+    transform: none;
+}
+
+
+.card:hover {
+
+    transform: scale(1.03);
+
+    box-shadow: none;
+}
+
+
+.card:disabled {
+
+    opacity: 1;
+
+    cursor: default;
+}
+
+
+.card-inner {
+
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+    transform-style: preserve-3d;
+
+    transition:
+        transform 0.55s ease;
+}
+
+
+.card.revealed .card-inner,
+.card.matched .card-inner {
+
+    transform:
+        rotateY(180deg);
+}
+
+
+/* =========================================================
+   FRENTE E VERSO
+========================================================= */
+
+.card-back,
+.card-front {
+
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 10px;
+
+    backface-visibility: hidden;
+
+    -webkit-backface-visibility: hidden;
+
+    overflow: hidden;
+}
+
+
+.card-back {
+
+    transform:
+        rotateY(0deg);
+
+    background:
+        linear-gradient(
+            145deg,
+            #86c8ff,
+            #345fd0
+        );
+
+    border:
+        2px solid rgba(180,230,255,0.8);
+
+    box-shadow:
+        inset 0 0 15px rgba(255,255,255,0.35),
+        0 0 8px rgba(80,160,255,0.4);
+}
+
+
+.card-back::after {
+
+    content: "🌌";
+
+    font-size:
+        clamp(18px, 3vw, 35px);
+
+    filter:
+        drop-shadow(0 0 8px white);
+}
+
+
+.card-front {
+
+    transform:
+        rotateY(180deg);
+
+    background:
+        radial-gradient(
+            circle,
+            #172e68,
+            #07132f
+        );
+
+    border:
+        2px solid #8ad1ff;
+
+    font-size:
+        clamp(22px, 4vw, 42px);
+
+    box-shadow:
+        0 0 15px rgba(70,160,255,0.5);
+}
+
+
+.card.matched {
+
+    cursor: default;
+
+    filter:
+        brightness(1.2);
+}
+
+
+.card.disabled {
+
+    cursor:
+        not-allowed;
+}
+
+
+/* =========================================================
+   QUIZ
+========================================================= */
+
+.modal {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 9999;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 20px;
+
+    background:
+        rgba(0,0,20,0.75);
+
+    backdrop-filter:
+        blur(7px);
+}
+
+
+.quiz-box {
+
+    width:
+        min(650px, 95vw);
+
+    padding: 30px;
+
+    border-radius: 22px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #101f55,
+            #050b22
+        );
+
+    border:
+        1px solid #75c7ff;
+
+    box-shadow:
+        0 0 40px rgba(40,130,255,0.55);
+
+    text-align: center;
+}
+
+
+.quiz-header {
+
+    margin-bottom: 20px;
+}
+
+
+#quizTheme {
+
+    font-size: 24px;
+
+    font-weight: bold;
+}
+
+
+#quizQuestion {
+
+    font-size: 21px;
+
+    line-height: 1.5;
+
+    margin-bottom: 25px;
+}
+
+
+#quizStatus {
+
+    min-height: 22px;
+
+    margin-bottom: 10px;
+
+    opacity: 0.8;
+}
+
+
+#quizOptions {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 12px;
+}
+
+
+.quiz-option {
+
+    width: 100%;
+
+    min-width: 0;
+
+    margin: 0;
+
+    padding: 15px;
+
+    background:
+        rgba(70,130,255,0.18);
+
+    border:
+        1px solid rgba(130,200,255,0.5);
+}
+
+
+.quiz-option:hover {
+
+    background:
+        rgba(70,150,255,0.35);
+}
+
+
+/* =========================================================
+   RESULTADO
+========================================================= */
+
+.result-panel {
+
+    text-align: center;
+}
+
+
+#winnerText {
+
+    margin:
+        20px 0;
+
+    font-size: 30px;
+}
+
+
+#finalScores {
+
+    margin:
+        20px 0;
+}
+
+
+.final-player {
+
+    padding: 15px;
+
+    margin: 8px 0;
+
+    border-radius: 12px;
+
+    background:
+        rgba(255,255,255,0.07);
+}
+
+
+/* =========================================================
+   MENSAGENS
+========================================================= */
+
+.message {
+
+    position: fixed;
+
+    left: 50%;
+
+    bottom: 25px;
+
+    transform:
+        translateX(-50%);
+
+    z-index: 10000;
+
+    padding:
+        13px 20px;
+
+    border-radius: 10px;
+
+    background:
+        rgba(5,15,40,0.95);
+
+    border:
+        1px solid #68bdff;
+
+    box-shadow:
+        0 0 20px rgba(60,150,255,0.5);
+
+    font-weight: bold;
+
+    text-align: center;
+
+    max-width:
+        90vw;
+}
+
+
+/* =========================================================
+   RESPONSIVO
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .game-header {
+
+        grid-template-columns:
+            1fr 1fr;
+
+    }
+
+    .turn-info {
+
+        grid-column:
+            1 / -1;
+
+        grid-row:
+            1;
+    }
+
+    .player-info.opponent {
+
+        grid-column:
+            1;
+    }
+
+    .player-info.local {
+
+        grid-column:
+            2;
+
+        text-align: right;
+    }
+
+
+    #board {
+
+        grid-template-columns:
+            repeat(4, 1fr);
+
+        gap: 6px;
+    }
+
+
+    .mode-container {
+
+        flex-direction: column;
+    }
+
+
+    #quizOptions {
+
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .logo h1 {
+
+        letter-spacing: 2px;
+    }
+}
+
+
+@media (max-width: 450px) {
+
+    .screen {
+
+        padding: 15px;
+    }
+
+    .panel {
+
+        padding: 22px 15px;
+    }
+
+    .game-screen {
+
+        padding: 8px;
+    }
+
+    .player-info {
+
+        padding: 8px;
+    }
+
+    .player-info strong {
+
+        font-size: 14px;
+    }
+
+    .turn-info strong {
+
+        font-size: 16px;
+    }
+
+    #board {
+
+        gap: 4px;
+    }
+
+    .card-back,
+    .card-front {
+
+        border-radius: 7px;
+    }
+}

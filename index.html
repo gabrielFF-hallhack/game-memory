@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Memória Cósmica</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div id="app">
+
+    <!-- =========================
+         MENU PRINCIPAL
+    ========================== -->
+
+    <section id="menu" class="screen">
+
+        <div class="logo">
+            <div class="logo-icon">🌌</div>
+
+            <h1>MEMÓRIA CÓSMICA</h1>
+
+            <p>Jogo de memória para 2 jogadores</p>
+        </div>
+
+        <div class="menu-buttons">
+
+            <button onclick="showCreate()">
+                🚀 CRIAR PARTIDA
+            </button>
+
+            <button onclick="showJoin()">
+                🛰️ ENTRAR NA PARTIDA
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         CRIAR PARTIDA
+    ========================== -->
+
+    <section id="create" class="screen hidden">
+
+        <div class="panel">
+
+            <h2>🚀 CRIAR PARTIDA</h2>
+
+            <input
+                id="createName"
+                type="text"
+                maxlength="20"
+                placeholder="Seu nome"
+                autocomplete="off"
+            >
+
+            <h3>Escolha o modo</h3>
+
+            <div class="mode-container">
+
+                <button
+                    class="mode selected"
+                    id="easyMode"
+                    onclick="selectMode('easy')"
+                >
+                    <strong>FÁCIL</strong>
+                    <small>32 cartas / 16 pares</small>
+                </button>
+
+                <button
+                    class="mode"
+                    id="impossibleMode"
+                    onclick="selectMode('impossible')"
+                >
+                    <strong>IMPOSSÍVEL</strong>
+                    <small>82 cartas / 41 pares</small>
+                </button>
+
+            </div>
+
+            <button onclick="createRoom()">
+                CRIAR SALA
+            </button>
+
+            <button
+                class="secondary"
+                onclick="backToMenu()"
+            >
+                VOLTAR
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         ENTRAR NA PARTIDA
+    ========================== -->
+
+    <section id="join" class="screen hidden">
+
+        <div class="panel">
+
+            <h2>🛰️ ENTRAR NA PARTIDA</h2>
+
+            <input
+                id="joinName"
+                type="text"
+                maxlength="20"
+                placeholder="Seu nome"
+                autocomplete="off"
+            >
+
+            <input
+                id="roomCode"
+                type="text"
+                maxlength="5"
+                placeholder="Código da sala"
+                autocomplete="off"
+            >
+
+            <button onclick="joinRoom()">
+                ENTRAR
+            </button>
+
+            <button
+                class="secondary"
+                onclick="backToMenu()"
+            >
+                VOLTAR
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         AGUARDANDO
+    ========================== -->
+
+    <section id="waiting" class="screen hidden">
+
+        <div class="panel waiting-panel">
+
+            <h2>🌌 AGUARDANDO JOGADORES</h2>
+
+            <p>Compartilhe este código com seu adversário:</p>
+
+            <div class="room-code-box">
+
+                <span>CÓDIGO DA SALA</span>
+
+                <strong id="displayCode">
+                    -----
+                </strong>
+
+                <button
+                    class="copy-button"
+                    onclick="copyRoomCode()"
+                >
+                    📋 COPIAR CÓDIGO
+                </button>
+
+            </div>
+
+            <div id="players"></div>
+
+            <p id="waitingMessage">
+                Aguardando o segundo jogador...
+            </p>
+
+            <button
+                id="readyButton"
+                onclick="toggleReady()"
+                disabled
+            >
+                COMEÇAR
+            </button>
+
+            <button
+                class="secondary"
+                onclick="leaveRoom()"
+            >
+                SAIR DA SALA
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         JOGO
+    ========================== -->
+
+    <section id="game" class="game-screen hidden">
+
+        <header class="game-header">
+
+            <!-- ADVERSÁRIO -->
+
+            <div class="player-info opponent">
+
+                <span class="player-label">
+                    OUTRO JOGADOR
+                </span>
+
+                <strong id="opponentName">
+                    ---
+                </strong>
+
+                <span>
+                    Cartas:
+                    <b id="opponentScore">0</b>
+                </span>
+
+            </div>
+
+
+            <!-- CENTRO -->
+
+            <div class="turn-info">
+
+                <strong id="turnText">
+                    AGUARDANDO
+                </strong>
+
+                <span id="cardCounter">
+                    CARTAS NA MESA: 0/0
+                </span>
+
+            </div>
+
+
+            <!-- VOCÊ -->
+
+            <div class="player-info local">
+
+                <span class="player-label">
+                    VOCÊ
+                </span>
+
+                <strong id="localName">
+                    ---
+                </strong>
+
+                <span>
+                    Cartas:
+                    <b id="localScore">0</b>
+                </span>
+
+            </div>
+
+        </header>
+
+
+        <main id="board"></main>
+
+    </section>
+
+
+    <!-- =========================
+         QUIZ
+    ========================== -->
+
+    <section id="quiz" class="modal hidden">
+
+        <div class="quiz-box">
+
+            <div class="quiz-header">
+
+                <span id="quizTheme">
+                    🌌 QUIZ
+                </span>
+
+            </div>
+
+            <p id="quizQuestion">
+                Pergunta...
+            </p>
+
+            <p id="quizStatus"></p>
+
+            <div id="quizOptions"></div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         RESULTADO
+    ========================== -->
+
+    <section id="result" class="screen hidden">
+
+        <div class="panel result-panel">
+
+            <h1>🏆 FIM DA PARTIDA</h1>
+
+            <h2 id="winnerText">
+                ---
+            </h2>
+
+            <div id="finalScores"></div>
+
+            <button onclick="requestRematch()">
+                🔄 REVANCHE
+            </button>
+
+            <button
+                class="secondary"
+                onclick="leaveRoom()"
+            >
+                SAIR
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         MENSAGEM
+    ========================== -->
+
+    <div
+        id="message"
+        class="message hidden"
+    ></div>
+
+</div>
+
+
+<!-- SOCKET.IO -->
+
+<script src="/socket.io/socket.io.js"></script>
+
+<!-- NOSSO JS -->
+
+<script src="game.js"></script>
+
+</body>
+</html>
